@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8559155749846222104}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &8816963295742624881
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -50,11 +50,41 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 25
+        m_Name: Rate
+        m_Overridden: 1
+      - m_Value: 0.79
+        m_Name: erosion
+        m_Overridden: 1
+      - m_Value: 0.01
+        m_Name: radius
+        m_Overridden: 1
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.07, y: 0.9}
+        m_Name: lifeTime
+        m_Overridden: 1
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: size
+        m_Overridden: 1
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: AngleOfSplatter
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 5, z: 0}
+        m_Name: PlanePos
+        m_Overridden: 1
+      - m_Value: {x: -1, y: 0.2, z: 1.2}
+        m_Name: velocity1
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 2, z: 2}
+        m_Name: velocity2
+        m_Overridden: 1
+      - m_Value: {x: 0, y: -4, z: 0}
+        m_Name: gravity
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
@@ -70,7 +100,13 @@ VisualEffect:
     m_NamedObject:
       m_Array: []
     m_Bool:
-      m_Array: []
+      m_Array:
+      - m_Value: 0
+        m_Name: isBurst
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: canSplatter
+        m_Overridden: 0
 --- !u!73398921 &7316525135099899684
 VFXRenderer:
   serializedVersion: 1

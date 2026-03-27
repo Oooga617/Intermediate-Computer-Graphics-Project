@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
+
 public class TankController : MonoBehaviour
 {
     public float moveSpeed;
@@ -10,10 +11,12 @@ public class TankController : MonoBehaviour
     private Rigidbody rb;
     public Animator ani;
     bool isFired = false;
-    public GameObject muzzleFlash;
+    public GameObject muzzleFlash, muzzleLight, smokeFP;
     public Transform firePoint;
     public bool isPlayerDisabled = false;
     public GameObject bloodSpray;
+
+    AudioSource audioSource;
     //got help from:
     //https://discussions.unity.com/t/c-player-controller-with-wsad-keys/657231
     //https://discussions.unity.com/t/character-rotation-using-charactercontroller/59232
@@ -21,10 +24,14 @@ public class TankController : MonoBehaviour
     //https://www.youtube.com/watch?v=X84szMcIbqg
     //https://www.youtube.com/watch?v=cI3E7_f74MA
     //https://discussions.unity.com/t/how-to-make-bullet-holes-at-raycast-hit/684428
+    //https://www.youtube.com/watch?v=1BMJFgK68IU
+    //https://www.youtube.com/shorts/_7H_5BmKgzQ
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
  
     }
@@ -58,25 +65,45 @@ public class TankController : MonoBehaviour
         Debug.Log("should spawn is fired");
         shoot();
         var muzzleEffect = Instantiate(muzzleFlash, firePoint);
-        yield return new WaitForSeconds(0.8f);
+        StartCoroutine(spawnLight());
+        StartCoroutine(spawnSmokeFP());
+        yield return new WaitForSeconds(0.7f);
         isFired = false;
         Destroy(muzzleEffect);
+        yield return null;
+    }
+
+    IEnumerator spawnSmokeFP()
+    {
+        var smokeEffect = Instantiate(smokeFP, firePoint);
+        smokeEffect.transform.parent = null;
+        yield return new WaitForSeconds(3f);
+        Destroy(smokeEffect);
+    }
+
+    IEnumerator spawnLight()
+    {
+        var pointLight = Instantiate(muzzleLight, firePoint);
+        yield return new WaitForSeconds(0.06f);
+        Destroy(pointLight);
         yield return null;
     }
 
     IEnumerator sprayingBlood(RaycastHit hit)
     {
         var targetPos = hit.transform.position;
-        var bloodDir = this.transform.position - targetPos;
-        GameObject blood = Instantiate(bloodSpray, hit.point + hit.normal * 0.0001f, Quaternion.LookRotation(hit.normal));
-        blood.transform.LookAt(bloodDir);
+        var bloodDir = (this.transform.position - targetPos).normalized;
+ 
+        //GameObject blood = Instantiate(bloodSpray, hit.point + hit.normal * 0.0001f, Quaternion.LookRotation(hit.normal));
+        GameObject blood = Instantiate(bloodSpray, hit.point + hit.normal * 0.0001f, Quaternion.LookRotation(bloodDir));
+
         yield return new WaitForSeconds(0.8f);
         Destroy(blood);
         yield return null;
     }
     void shoot()
     {
-
+        playGunSound();
         Vector3 direction = transform.forward;
         if (Physics.Raycast(firePoint.position, direction, out RaycastHit hit, float.MaxValue))
         {
@@ -88,6 +115,11 @@ public class TankController : MonoBehaviour
                 
             }
         }
+    }
+
+    void playGunSound()
+    {
+        audioSource.Play();
     }
 
     void getInput()

@@ -58,5 +58,6 @@ Material:
     - _Scale: 7
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

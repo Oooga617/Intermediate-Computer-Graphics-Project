@@ -28,7 +28,7 @@ public class CamManager : MonoBehaviour
     void Awake()
     {
         //disable zombie script
-        z.enabled = false;
+        z.enabled = true;
         //sets every camera as a low priority
         for (int i = 0; i < cams.Count; i++)
         {
