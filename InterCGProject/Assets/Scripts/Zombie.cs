@@ -4,7 +4,7 @@ using UnityEngine;
 public class Zombie : MonoBehaviour
 {
     public Animator animator;
-    int hp = 5;
+    int hp = 3;
     public CapsuleCollider c;
 
     //setting up the zombie sounds

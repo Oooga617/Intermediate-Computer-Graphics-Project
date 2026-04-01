@@ -8,11 +8,17 @@ public class LightingStrike : MonoBehaviour
     public AudioClip t1, t2, t3, t4, t5, t6;
     //pick which thunder sound to play
     int pickSfx;
+    bool canPlay = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         lighting.Stop();
         audioSource = GetComponent<AudioSource>();
+    }
+
+    public void disableSfx()
+    {
+        canPlay = false;
     }
 
     public void playerEffect()
@@ -22,7 +28,8 @@ public class LightingStrike : MonoBehaviour
 
     public void playThunder()
     {
-        pickSfx = Random.Range(0, 6);
+        if (canPlay)
+            pickSfx = Random.Range(0, 6);
         switch (pickSfx)
         {
             case 0:

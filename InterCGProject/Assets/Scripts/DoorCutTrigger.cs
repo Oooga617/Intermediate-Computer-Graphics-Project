@@ -6,6 +6,8 @@ public class DoorCutTrigger : MonoBehaviour
     //playable director for the door cutscene
     public PlayableDirector doorDir;
     public TankController player;
+    public AudioSource horrorAmb;
+    public LightingStrike lighting;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +19,8 @@ public class DoorCutTrigger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("Player"))
         {
             triggerDoorCut();
+            horrorAmb.Stop();
+            lighting.disableSfx();
         }
     }
 
