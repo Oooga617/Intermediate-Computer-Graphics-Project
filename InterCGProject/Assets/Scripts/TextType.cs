@@ -13,6 +13,7 @@ public class TextType : MonoBehaviour
     public bool canPress = false;
     public CamManager camManager;
     public GameObject ammoBox;
+    public Vector3 newTextPos;
 
     int i = 0;
     //used this: https://www.youtube.com/watch?v=IqpgJlhtmoo
@@ -26,8 +27,10 @@ public class TextType : MonoBehaviour
     public void EndCheck()
     {
         if (i == 1)
+        {
             camManager.showShells();
-
+            txtUI.rectTransform.anchoredPosition = newTextPos;
+        }
 
         if (i <= text.Length-2)
         {

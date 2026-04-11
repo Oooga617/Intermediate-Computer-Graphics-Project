@@ -19,6 +19,8 @@ public class CamManager : MonoBehaviour
     public TextType textType;
     //shotgun shell pick up camera
     public PlayableDirector shotDir;
+    //cinemachine camera for showing the shotgun shells
+    public CinemachineCamera shellsCam;
 
     public Animator deadGuy;
 
@@ -29,6 +31,7 @@ public class CamManager : MonoBehaviour
     {
         //disable zombie script
         z.enabled = true;
+        shellsCam.enabled = false;
         //sets every camera as a low priority
         for (int i = 0; i < cams.Count; i++)
         {
@@ -76,11 +79,13 @@ public class CamManager : MonoBehaviour
 
     public void showShells()
     {
+        shellsCam.enabled = true;
         shotDir.Play();        
     }
 
     public void stopShowingShells()
     {
+        shellsCam.enabled = false;
         shotDir.Stop();
     }
 
