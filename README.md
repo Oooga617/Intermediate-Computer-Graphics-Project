@@ -10,7 +10,8 @@ The VFX and scripting was entirely done by me, but a lot of the assets itself ca
 
 If I were to go back, I would heavily refine the code and logic for the movement, shooting, interactions and cutscene triggers. 
 
-Assets:
+## Assets:
+
 Vintage House Modular Kit by ZNS3D: https://assetstore.unity.com/packages/3d/environments/vintage-living-room-3d-game-pack-314464
 Bodyguard models by Batewar: https://assetstore.unity.com/packages/3d/characters/humanoids/humans/bodyguards-31711
 Police Officer model by Dmitriy Poskrebyshev: https://assetstore.unity.com/packages/3d/characters/humanoids/humans/policeofficer-177761
@@ -27,8 +28,8 @@ Thunder Sound Set Volume 1, Thunder Pop Productions: https://assetstore.unity.co
 Doors Small Sound Pack, Sound Works 12:
 https://assetstore.unity.com/packages/audio/sound-fx/doors-small-sound-pack-262071
 
-Tutorials used:
-Tutorials:
+## Tutorials:
+
 Using Triggers To Change Cameras (Unity, Cinemachine), Austin Young: https://medium.com/@austinjy13/using-triggers-to-change-cameras-unity-cinemachine-fb4825fa1885
 Unity -2DGameKit Intro Cutscene - 08 - Trigger Cutscene, ACDev: https://www.youtube.com/watch?v=biyH7pKwSAs
 Method Prioritize from Unity Documentation: https://docs.unity3d.com/Packages/com.unity.cinemachine@3.0/api/Unity.Cinemachine.CinemachineVirtualCameraBase.Prioritize.html
